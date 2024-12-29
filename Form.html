@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Job Application Form</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 20px;
+    }
+    form {
+      max-width: 500px;
+      margin: auto;
+      border: 1px solid #ccc;
+      padding: 20px;
+      border-radius: 10px;
+      background-color: #f9f9f9;
+    }
+    label {
+      display: block;
+      margin-bottom: 8px;
+      font-weight: bold;
+    }
+    input, textarea, button {
+      width: 100%;
+      padding: 10px;
+      margin-bottom: 15px;
+      border: 1px solid #ccc;
+      border-radius: 5px;
+    }
+    button {
+      background-color: #4CAF50;
+      color: white;
+      cursor: pointer;
+    }
+    button:hover {
+      background-color: #45a049;
+    }
+  </style>
+</head>
+<body>
+  <h1>Job Application Form</h1>
+  <form id="jobForm">
+    <label for="name">Full Name:</label>
+    <input type="text" id="name" name="name" placeholder="Enter your full name" required>
+
+    <label for="email">Your Email Address:</label>
+    <input type="email" id="email" name="email" placeholder="Enter your email" required>
+
+    <label for="position">Position Applying For:</label>
+    <input type="text" id="position" name="position" placeholder="Enter the position name" required>
+
+    <label for="message">Message:</label>
+    <textarea id="message" name="message" placeholder="Write a message (optional)" rows="4"></textarea>
+
+    <button type="submit">Submit Application</button>
+  </form>
+
+  <script>
+    document.getElementById('jobForm').addEventListener('submit', function(event) {
+      event.preventDefault(); // Prevent the default form submission behavior
+
+      // Gather user input
+      const name = document.getElementById('name').value;
+      const email = document.getElementById('email').value;
+      const position = document.getElementById('position').value;
+      const message = document.getElementById('message').value;
+
+      // Construct the mailto link
+      const mailtoLink = `mailto:dumbuyasahid821@gmail.com?subject=Job Application: ${encodeURIComponent(position)}&body=${encodeURIComponent(
+        `Name: ${name}\nEmail: ${email}\nPosition: ${position}\nMessage: ${message}`
+      )}`;
+
+      // Redirect to the mailto link
+      window.location.href = mailtoLink;
+    });
+  </script>
+</body>
+</html>
